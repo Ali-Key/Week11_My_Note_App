@@ -52,7 +52,7 @@ function App() {
     const deleteNote = (id) => {
       // Make API call to delete a note (DELETE request to localhost:9000/delete_note/:id)
       // Halkaas ka tirtir note adigoo DELETE request isticmaalaayo localhost:9000/delete_note/:id
-      const confirm = window.confirm("do you sure to delete this user ? : ");
+      const confirm = window.confirm("Mahuubtaa inaa detele dhaheesid  ? : ");
       if(confirm){
         axios.delete("http://localhost:9000/delete_note/"+id)
         .then(res=>{
