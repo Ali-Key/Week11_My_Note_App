@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 // Import all your components here
 // Soo Jiido wixii components ah ood u baahantahay
 
-import Notes from './components/Notes';
+import Notes from "./components/Notes";
 import AddNote from "./components/AddNote";
 
 
@@ -10,6 +10,7 @@ import AddNote from "./components/AddNote";
 import axios from "axios";
 
 function App() {
+  
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
@@ -38,32 +39,31 @@ function App() {
   .post("http://localhost:9000/create_note", noteData)
   .then((res) => {  
     setNotes([res.data, ...notes]);
-    console.log(res);
+    // console.log(res);
+    console.log(notes);
   })
-  };
-
-  const deleteNote = (id) => {
-
-    // Make API call to delete a note (DELETE request to localhost:9000/delete_note/:id)
-    // Halkaas ka tirtir note adigoo DELETE request isticmaalaayo localhost:9000/delete_note/:id
-
-    axios
-    .delete(`http://localhost:9000s/delete_note/${id}`)
-    .then((res) => {
-        setNotes(res.data);
-      })
-    .catch((err) => {
-        console.log(err);
-      });
   };
 
  
 
+    // Make API call to delete a note (DELETE request to localhost:9000/delete_note/:id)
+    // Halkaas ka tirtir note adigoo DELETE request isticmaalaayo localhost:9000/delete_note/:id
 
+    const deleteNote = (id) => {
+      // Make API call to delete a note (DELETE request to localhost:9000/delete_note/:id)
+      // Halkaas ka tirtir note adigoo DELETE request isticmaalaayo localhost:9000/delete_note/:id
+      const confirm = window.confirm("do you sure to delete this user ? : ");
+      if(confirm){
+        axios.delete("http://localhost:9000/delete_note/"+id)
+        .then(res=>{
+          document.location.reload(res.data);
+        }).catch(err=>{
+          console.log(err);
+        })
+      }
+    };
 
-
-
-
+ 
 
 
 
@@ -78,7 +78,7 @@ function App() {
           { /* Halkaas ku dar components-ka aad u baahan tahay */ }
           
           <AddNote AddNote={createNote} />
-          {/* <Notes notes={notes} deleteNote={deleteNote} /> */}
+          <Notes notes={notes} deleteNote={deleteNote} />
 
         </div>
       </div>

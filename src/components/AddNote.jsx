@@ -44,7 +44,7 @@ const AddNote = (props) => {
         <Field 
           type="text"
           name="title"
-          placeholder="Enter the title......"
+          placeholder="Enter the title"
           className="w-full p-3 border-2 rounded outline-none"
           />
 
@@ -53,12 +53,12 @@ const AddNote = (props) => {
          <Field 
           as="textarea"
           name="content"
-          placeholder="Enter the description........."
+          placeholder="Enter the description"
           className="w-full p-3 border-2 rounded outline-none"
          />
 
         <ErrorMessage name="content" component="div" className="border-l-4 border-[#cf3d3d] p-4 text-sm text-[#cf3d3d] shadow rounded"/>
-         <button type="submit" className="p-3 bg-yellow-300 rounded-lg text-white hover:bg-yellow-500">Add Note</button>
+         <button type="submit" className="p-3 bg-yellow-500 rounded-lg text-white hover:bg-yellow-500">Add Note</button>
       </Form>
 
      </Formik>
